@@ -1,4 +1,4 @@
-# React Ui-Material Admin Application for budget
+# React Admin Application for budget
 
 This is a simple responsive admin template using React and Material-UI components.
 
