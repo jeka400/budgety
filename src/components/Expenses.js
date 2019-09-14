@@ -33,9 +33,6 @@ const ExpenseFilter = props => {
     return (
         <Filter { ...props }>
             <TextInput label="Search" source="q" alwaysOn />
-            <ReferenceInput label="Expense source" source="expenseId" reference="expenses" allowEmpty>
-                <SelectInput optionText="expense" />
-            </ReferenceInput>
             <ReferenceInput label="User's first name" source="userId" reference="users" allowEmpty>
                 <SelectInput optionText="firstName" />
             </ReferenceInput>
@@ -43,22 +40,20 @@ const ExpenseFilter = props => {
     )
 }
 
-const ExpensePagination = ({ _page, _limit, total, setPage }) => {
-    const nbPages = Math.ceil(total / _limit) || 1;
+const ExpensePagination = ({ page, total, setPage }) => {
     return (
-        nbPages > 1 &&
-            <Toolbar>
-                {_page > 1 &&
-                    <Button color="secondary" key="prev" icon={<ChevronLeft />} onClick={() => setPage(_page - 1)}>
-                        Prev
-                    </Button>
-                }
-                {_page !== nbPages &&
-                    <Button color="secondary" key="next" icon={<ChevronRight />} onClick={() => setPage(_page + 1)} labelposition="before">
-                        Next
-                    </Button>
-                }
-            </Toolbar>
+        <Toolbar>
+            {page > 1 &&
+                <Button color="primary" key="prev" icon={<ChevronLeft />} onClick={() => setPage(page - 1)}>
+                    Prev
+                </Button>
+            }
+            {total &&
+                <Button color="primary" key="next" icon={<ChevronRight />} onClick={() => setPage(page + 1)} labelposition="before">
+                    Next
+                </Button>
+            }
+        </Toolbar>
     );
 };
 
@@ -68,7 +63,7 @@ export const ExpenseList = ({ ...props }) => {
             filters={ <ExpenseFilter /> } 
             title="List of expences" 
             filter={{ title: true }}
-            _limit={5}
+            perPage={5}
             pagination={<ExpensePagination />}
             { ...props }
         >
@@ -82,7 +77,7 @@ export const ExpenseList = ({ ...props }) => {
                 }
                 medium={
                     <Datagrid>
-                        <TextField label="Expense ID" source="id" sortable={ false } />
+                        <TextField label="Expense ID" source="id" />
                         <TextField label="Expense" source="title"  />
                         <NumberField label="Expense value" source="value" />
                         <ReferenceField source="userId" reference="users">
@@ -120,7 +115,7 @@ export const ExpenseTitle = ({ record }) => {
 
 export const ExpenseEdit = props => {
     return (
-        <Edit title={ <ExpenseTitle /> } redirect="list" undoable={false} { ...props }>
+        <Edit title={ <ExpenseTitle /> } undoable={false} { ...props }>
             <SimpleForm>
                 <DisabledInput source="id" />
                 <ReferenceInput source="userId" reference="users">

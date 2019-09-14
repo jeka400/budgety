@@ -18,31 +18,24 @@ import {
     Filter,
     CardActions,
     CreateButton,
-    ExportButton,
-    RefreshButton,
     NumberInput,
     NumberField,
 } from 'react-admin';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import ChevronRight from '@material-ui/icons/ChevronRight';
 import Toolbar from '@material-ui/core/Toolbar';
-import IncomeSource from './myFields/IncomeSource';
 
 const IncomeActions = ({
     bulkActions,
     basePath,
-    currentSort,
     displayedFilters,
-    exporter,
     filters,
     filterValues,
     onUnselectItems,
     resource,
     selectedIds,
     showFilter,
-    total
 }) => (
     <CardActions>
         {bulkActions && React.cloneElement(bulkActions, {
@@ -60,15 +53,7 @@ const IncomeActions = ({
             context: 'button',
         }) }
         <CreateButton basePath={basePath} />
-        <ExportButton
-            disabled={total === 0}
-            resource={resource}
-            _sort={currentSort}
-            filter={filterValues}
-            exporter={exporter}
-        />
-        <RefreshButton />
-        <Button color="primary" >Custom Action</Button> 
+
     </CardActions>
 );
 
@@ -76,9 +61,6 @@ const IncomeFilter = props => {
     return (
         <Filter { ...props }>
             <TextInput label="Search" source="q" alwaysOn />
-            <ReferenceInput label="Income source" source="incomeId" reference="incomes" allowEmpty>
-                <SelectInput optionText="incomeSource" />
-            </ReferenceInput>
             <ReferenceInput label="User's first name" source="userId" reference="users" allowEmpty>
                 <SelectInput optionText="firstName" />
             </ReferenceInput>
@@ -86,43 +68,21 @@ const IncomeFilter = props => {
     );
 };
 
-const IncomePagination = ({ page, perPage, total, setPage }) => {
-    const nbPages = Math.ceil(total / perPage) || 1;
+const IncomePagination = ({ page, total, setPage }) => {
     return (
-        nbPages > 1 &&
-            <Toolbar>
-                {page > 1 &&
-                    <Button color="secondary" key="prev" icon={<ChevronLeft />} onClick={() => setPage(page - 1)}>
-                        Prev
-                    </Button>
-                }
-                {page !== nbPages &&
-                    <Button color="secondary" key="next" icon={<ChevronRight />} onClick={() => setPage(page + 1)} labelposition="before">
-                        Next
-                    </Button>
-                }
-            </Toolbar>
+        <Toolbar>
+            {page > 1 &&
+                <Button color="primary" key="prev" icon={<ChevronLeft />} onClick={() => setPage(page - 1)}>
+                    Prev
+                </Button>
+            }
+            {total &&
+                <Button color="primary" key="next" icon={<ChevronRight />} onClick={() => setPage(page + 1)} labelposition="before">
+                    Next
+                </Button>
+            }
+        </Toolbar>
     );
-};
-
-const Aside = ({ ...props }) => {
-    const sumArr =  Object.values(props.data).map(el => el.incomeValue);
-    if(sumArr) {
-        var sum = 0;
-        for(var i = 0; i < sumArr.length; i++){
-            sum += sumArr[i];
-        }
-        return sum;
-    }
-
-    return (
-        <div style={{ width: 150, margin: 50 }}>
-            <Typography variant="title">Total count is:</Typography>
-            <Typography variant="body1">
-                {sum ? sum : ''}
-            </Typography>
-        </div>
-    )
 };
 
 export const IncomeList = ({ permissions, ...props }) => {
@@ -132,9 +92,7 @@ export const IncomeList = ({ permissions, ...props }) => {
             title="List of incomes" 
             actions={ <IncomeActions permissions={permissions} /> }
             perPage={5}
-            sort={{ field: 'userId', order: 'ASC' }}
             pagination={<IncomePagination />}
-            aside={<Aside />}
             { ...props }
         >
             <Responsive
@@ -147,9 +105,9 @@ export const IncomeList = ({ permissions, ...props }) => {
                 }
                 medium={
                     <Datagrid rowClick="edit">
-                        <TextField label="Income ID" source="id" sortable={ false } />
-                        <IncomeSource label="Income source" source="incomeSource" />
-                        <NumberField label="Income value" source="incomeValue" sortable={ false } />
+                        <TextField label="Income ID" source="id"/>
+                        <TextField label="Income source" source="incomeSource" />
+                        <NumberField label="Income value" source="incomeValue" />
                         <ReferenceField source="userId" reference="users" >
                                 <TextField label="User's first name" source="firstName" />
                         </ReferenceField>
@@ -174,8 +132,8 @@ const ValidateUserCreation = (values) => {
 
 export const IncomeCreate = props => {
     return (
-        <Create redirect="list" { ...props }>
-            <SimpleForm validate={ValidateUserCreation} >
+        <Create { ...props }>
+            <SimpleForm validate={ValidateUserCreation} redirect="list">
                 <ReferenceInput source="userId" reference="users">
                     <SelectInput optionText="firstName" />
                 </ReferenceInput>
@@ -195,7 +153,7 @@ export const IncomeTitle = ({ record }) => {
 
 export const IncomeEdit = props => {
     return (
-        <Edit title={ <IncomeTitle /> } redirect="list" { ...props }>
+        <Edit title={ <IncomeTitle /> } { ...props }>
             <SimpleForm>
                 <DisabledInput source="id" />
                 <ReferenceInput source="userId" reference="users">

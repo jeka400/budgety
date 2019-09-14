@@ -1,0 +1,193 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Lorem",
+      "lastName": "Ipsum",
+      "email": "lorem@gmail.com",
+      "phone": "12345689",
+      "born": "1992-06-02",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur commodo vehicula ipsum, eu faucibus purus finibus ut. Donec faucibus ante eget felis dictum, vitae molestie velit malesuada. Fusce faucibus accumsan volutpat. Aliquam pharetra, quam non condimentum suscipit, massa mi molestie odio, vitae luctus dolor tellus et est. Fusce dignissim ultricies hendrerit. Proin laoreet, est vel ultricies auctor, arcu ex finibus lorem, vel ultricies sem sem nec justo. Donec eleifend interdum lorem, id convallis quam fermentum in. Phasellus consectetur mi id turpis rhoncus, id tincidunt ipsum sagittis. Donec feugiat sed nisi imperdiet vestibulum.",
+      "commentable": true,
+      "occupation": "designer"
+    },
+    {
+      "id": 2,
+      "firstName": "Dolor",
+      "lastName": "Sit",
+      "email": "dolor@gmail.com",
+      "phone": "987654321",
+      "born": "1993-04-18",
+      "about": "Integer ac scelerisque sem, sed tristique est. Nunc vitae lacinia est, ac tincidunt lorem. Aliquam malesuada hendrerit odio. Aliquam facilisis mi pretium, gravida elit id, rutrum enim. Nulla vehicula justo vitae rutrum semper. Donec gravida lectus eros, a pulvinar mi mattis at. Aliquam tristique faucibus augue, at interdum urna tempus non. Pellentesque luctus odio sit amet enim tincidunt, nec posuere purus elementum. Suspendisse sodales maximus mattis. Sed eget erat tortor. Duis dolor sapien, varius et orci non, consequat feugiat augue. Proin in placerat sem.",
+      "commentable": false,
+      "occupation": "developer"
+    },
+    {
+      "id": 3,
+      "firstName": "Fusce",
+      "lastName": "Etiam",
+      "email": "fusce@gmail.com",
+      "phone": "678954321",
+      "born": "1986-03-19",
+      "about": "Aenean quis dignissim enim. Nullam egestas, mauris sit amet porttitor molestie, lectus dui blandit nulla, porta pellentesque mauris dui et augue. Fusce aliquet eget metus non egestas. Etiam nisl massa, lobortis non lacus aliquam, vehicula tincidunt arcu. In consequat imperdiet mauris non iaculis. ",
+      "commentable": false,
+      "occupation": "teacher"
+    }
+  ],
+  "incomes": [
+    {
+      "id": 1,
+      "userId": 1,
+      "incomeSource": "Amet",
+      "incomeValue": 20000,
+      "income": {
+        "value": "20.000",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      }
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "incomeSource": "Morbi",
+      "incomeValue": 150000,
+      "income": {
+        "value": "150.000",
+        "description": "Fusce faucibus accumsan volutpat. Aliquam pharetra, quam non condimentum suscipit, massa mi molestie odio, vitae luctus dolor tellus et est. "
+      }
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "incomeSource": "Aliquam",
+      "incomeValue": 2222,
+      "income": {
+        "description": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus ut lorem nec sapien scelerisque euismod. Mauris ornare at ipsum a hendrerit."
+      }
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "incomeSource": "Donec",
+      "incomeValue": 2323,
+      "income": {
+        "description": "Donec feugiat sed nisi imperdiet vestibulum."
+      }
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "incomeSource": "Nunc",
+      "incomeValue": 2333,
+      "income": {
+        "description": "Sed a ligula tempor, dictum eros eu, blandit diam. Pellentesque vitae nisl tristique elit pellentesque tempus. Ut rutrum pretium arcu, id porttitor sapien posuere at. Suspendisse maximus lacus dui, sit amet condimentum tellus feugiat non."
+      }
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "incomeSource": "Integer",
+      "incomeValue": 6566,
+      "income": {
+        "description": "Nunc vitae lacinia est, ac tincidunt lorem."
+      }
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "incomeSource": "Sed",
+      "incomeValue": 123,
+      "income": {
+        "description": "Praesent ultrices tortor sit amet elit fringilla, euismod interdum massa suscipit."
+      }
+    },
+    {
+      "id": 8,
+      "userId": 2,
+      "incomeValue": 123123,
+      "incomeSource": "Suspendisse",
+      "income": {
+        "description": "Suspendisse mattis, tortor sed luctus aliquet, urna enim sodales ante, pellentesque congue mauris libero eu arcu. Curabitur in enim orci. Ut lacinia posuere aliquam."
+      }
+    },
+    {
+      "id": 9,
+      "userId": 2,
+      "incomeSource": "Cras",
+      "incomeValue": 123123,
+      "income": {
+        "description": "Nulla consequat mi nec ex ornare, eget gravida dolor accumsan."
+      }
+    },
+    {
+      "id": 10,
+      "userId": 2,
+      "incomeSource": "Maecenas",
+      "incomeValue": 1231231,
+      "income": {
+        "description": "Suspendisse mattis, tortor sed luctus aliquet, urna enim sodales ante, pellentesque congue mauris libero eu arcu. "
+      }
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "incomeSource": "Class",
+      "incomeValue": 12312,
+      "income": {
+        "description": "Duis tellus metus, vehicula et bibendum malesuada, tempus non purus. Nam ornare ipsum ante, quis viverra lorem gravida vel. "
+      }
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "incomeSource": "Nulla",
+      "incomeValue": 1000,
+      "income": {
+        "description": "Morbi non elementum nisi, vel feugiat dui. Integer orci diam, lacinia vitae nibh non, posuere laoreet sapien. Quisque sed dignissim urna, ut feugiat."
+      }
+    }
+  ],
+  "expenses": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "Nullam",
+      "value": 100,
+      "description": "Aliquam tristique faucibus augue, at interdum urna tempus non."
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "title": "Aenean",
+      "value": 500,
+      "description": "WQDWE"
+    },
+    {
+      "id": 3,
+      "userId": 2,
+      "title": "Mauris",
+      "value": 300,
+      "description": "Sed eget erat tortor. Duis dolor sapien, varius et orci non, consequat feugiat augue. Proin in placerat sem."
+    },
+    {
+      "id": 4,
+      "userId": 3,
+      "title": "Integer",
+      "value": 200,
+      "description": "Suspendisse sodales maximus mattis. Sed eget erat tortor."
+    },
+    {
+      "id": 5,
+      "userId": 3,
+      "title": "Praesent",
+      "value": 870,
+      "description": "Suspendisse velit nisi, cursus eu neque congue, dapibus fringilla eros. "
+    },
+    {
+      "userId": 2,
+      "title": "Curabitur",
+      "value": 209,
+      "description": "Nunc molestie quam nibh, a congue justo dictum vitae.",
+      "id": 6
+    }
+  ]
+}

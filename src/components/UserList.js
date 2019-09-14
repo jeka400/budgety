@@ -13,8 +13,6 @@ import {
     ShowButton,
     TabbedShowLayout,
     Tab,
-    BooleanField,
-    ReferenceManyField,
     ChipField,
     Edit,
     TextInput,
@@ -29,17 +27,13 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
-const userRowStyle = (record) => ({
-    backgroundColor: 'black',
-});
-
 const UserPanel = ({ id, record }) => (
     <div dangerouslySetInnerHTML={{ __html: record.about }} />
 );
 
 export const UserList = (props) => {
     return (
-        <List { ...props } title="List of users" >
+        <List { ...props } title="List of users" pagination={ false } >
             <Responsive 
                 small={
                     <SimpleList
@@ -48,7 +42,7 @@ export const UserList = (props) => {
                     />
                 }
                 medium={
-                    <Datagrid rowStyle={userRowStyle} expand={ <UserPanel /> } rowClick="edit" >
+                    <Datagrid expand={ <UserPanel /> } rowClick="edit" >
                         <TextField source="id" />
                         <TextField source="firstName" />
                         <TextField source="lastName" />
@@ -76,7 +70,7 @@ const cardActionStyle = {
     float: 'right',
 };
 
-const UserShowActions = ({ basePath, data, resource }) => {
+const UserShowActions = ({ basePath, data }) => {
     return (
         <CardActions style={cardActionStyle}>
             <EditButton basePath={basePath} record={data} />
@@ -85,13 +79,7 @@ const UserShowActions = ({ basePath, data, resource }) => {
     )
 }
 
-const styles = {
-    palleteTab: {
-        color: 'pink'
-    }
-};
-
-export const UserShow = withStyles(styles)(({ classes, ...props }) => {
+export const UserShow = ({  ...props }) => {
     return (
         <Show 
             title={ <UserTitle /> } 
@@ -99,7 +87,7 @@ export const UserShow = withStyles(styles)(({ classes, ...props }) => {
             { ...props }
         >
             <TabbedShowLayout>
-                <Tab label="summary" className={classes.palleteTab}>
+                <Tab label="summary">
                     <TextField label="First name:" source="firstName" />
                     <TextField label="Last name:" source="lastName" />
                     <EmailField label="Email:" source="email" />
@@ -107,13 +95,13 @@ export const UserShow = withStyles(styles)(({ classes, ...props }) => {
                     <DateField label="Birth date:" source="born" />
                     <ChipField label="Occupation" source="occupation" />
                 </Tab>
-                <Tab label="About" className={classes.palleteTab}>
+                <Tab label="About">
                     <RichTextField label="About user:"  source="about" />
                 </Tab>
             </TabbedShowLayout>
         </Show>
     )
-});
+};
 
 const validateEmail = email();
 
