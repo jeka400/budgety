@@ -2,7 +2,6 @@
 
 This is a simple responsive admin template using React and Material-UI components.
 
-This is the very first version, feel free to use for any app. Contributions are always welcome!
 
 
 ## Installation / Running
